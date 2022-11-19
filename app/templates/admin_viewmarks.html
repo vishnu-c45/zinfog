@@ -1,0 +1,63 @@
+{% extends 'admin_base.html' %}
+{% block content %}
+
+<div class="row">
+    <div class="col sm-3"></div>
+    <div class="col sm-6">
+        {% for message in messages  %}
+    
+        {% if message.tags == 'error' %}
+        <div class="alert alert-danger text-center">
+            {{message}}
+        </div>
+
+        {% endif %}
+ {% endfor %}
+
+    </div>
+    <div class="col sm-3"></div>
+
+</div>
+
+
+
+<table  class="table text-center ">
+    <h1 class="text-center ">Students Marks</h1>
+    <tr>
+        <th>sl.no</th>
+        <th>Student Name</th>
+        <th>Maths mark</th>
+        <th>Physics Mark</th>
+        <th>Chemistry mark</th>
+        <th>Action</th>
+        
+        
+       
+       
+        <!-- <th>Action</th> -->
+    </tr>
+    {% for p in std %}
+   <tr>
+        <td>{{forloop.counter}}</td>
+        <td>{{p.student.name}}</td>
+        <td>{{p.maths_marks}}/100</td>
+        <td>{{p.physics_marks}}/100</td>
+        <td>{{p.chemistry_marks}}/100</td>
+        <td><a href="{% url 'update_studentmarks' p.id %}" class="btn btn-warning ">Edit</a>
+         <a href="{% url 'Delete_marks' p.id %}"class="btn btn-danger" >Delete</a></td>
+
+        
+    </tr>
+    {% endfor %}
+    
+</table>
+
+<script>
+
+    $(document).ready(function(){
+        $('.alert').hide(4000);
+    })
+</script>
+
+
+{% endblock %}

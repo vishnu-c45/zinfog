@@ -1,0 +1,60 @@
+{% extends 'student_base.html' %} {% load static%} {% block content %}
+
+
+
+
+<section>
+
+    <div class="row mt-5">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4">
+          {% for message in messages  %}
+              <div class="alert alert-{{message.tags}}" >
+                {{message}}
+               </div> 
+            {% endfor %}
+            <form id="post_form" action="{% url 'update_student' %}" method="post" enctype="">
+                {% csrf_token %}
+                <h1 class="mb-3">Update student profile </h1>
+
+                <div class="form-group">
+                  <label for="exampleFormControlSelect1">Student</label>
+                  <input class="form-control" value="{{std.name}}"  name="name2" required  id="type">
+              
+                </div>
+
+               
+
+
+
+                <div class="form-group">
+                  <label for="exampleFormControlTextarea1">Phone number</label>
+                  <input class="form-control" value="{{std.phonenumber}}" name="phn"  required rows="3">
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">age</label>
+                    <input class="form-control" value="{{std.age}}" name="age"  required rows="3">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="exampleFormControlTextarea1">email</label>
+                    <input class="form-control" value="{{std.email}}" name="email"  required rows="3">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="exampleFormControlTextarea1">bio</label>
+                    <input class="form-control" value="{{std.bio}}" name="bio"  required rows="3">
+                  </div>
+
+                <div class="form-group">
+                   <button type="submit" id="btn1" class="btn mt-5 btn-danger w-100">Update</button>
+                  </div>
+              </form>
+        </div>
+        <div class="col-sm-4"></div>
+    </div>
+</section>
+
+
+{% endblock %}

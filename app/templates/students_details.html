@@ -1,0 +1,40 @@
+{% extends 'admin_base.html' %}
+{% block content %}
+
+   
+
+
+
+<table  class="table text-center  " style="border: 1px solid;">
+  <h1 class="text-center ">Students  Management</h1>
+  <tr>
+      <th>sl.no</th>
+      <th>Student Name</th>
+      <th>Username</th>
+      <th>Student Phone number</th>
+      <th>Dob</th>
+      
+  
+      
+      
+     
+     
+      <!-- <th>Action</th> -->
+  </tr>
+  {% for p in std %}
+ <tr>
+      <td>{{forloop.counter}}</td>
+      <td>{{p.name}}</td>
+      <td>{{p.username}}</td>
+      <td>{{p.phonenumber}}</td>
+      <td>{{p.date_of_birth}}</td>
+      
+      
+  </tr>
+  {% endfor %}
+  
+</table>
+
+{% endblock %}
+
+
